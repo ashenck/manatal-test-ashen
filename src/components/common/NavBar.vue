@@ -1,38 +1,16 @@
 <template>
-  <v-app-bar app flat color="white">
+  <v-app-bar app flat color="white" elevation="1">
     <div class="d-flex align-center">
-      <h2><i>NEWS</i></h2>
+      <h1 class="font-weight-black"><i>NEWS</i></h1>
     </div>
 
     <v-spacer></v-spacer>
-    <v-tooltip bottom>
-      <template v-slot:activator="{ on, attrs }">
-        <v-btn
-          class="mx-2"
-          color="white" to="/"
-          elevation="2" fab light small
-          v-bind="attrs"
-          v-on="on"
-        >
-          <v-icon dark> mdi-home </v-icon>
-        </v-btn>
-      </template>
-      <span>Home</span>
-    </v-tooltip>
-    <v-tooltip bottom>
-      <template v-slot:activator="{ on, attrs }">
-        <v-btn
-          class="mx-2"
-          color="white"
-          elevation="2" fab light small
-          v-bind="attrs"
-          v-on="on"
-        >
-          <v-icon dark> mdi-history </v-icon>
-        </v-btn>
-      </template>
-      <span>History</span>
-    </v-tooltip>
+    <v-btn class="mx-0" text  to="/">
+      <v-icon dark> mdi-home </v-icon> <span class="d-none d-sm-flex">Home</span>
+    </v-btn>
+    <v-btn class="ml-1" text>
+      <v-icon class="mr-1" dark> mdi-history </v-icon> <span class="d-none d-sm-flex">History</span>
+    </v-btn>
   </v-app-bar>
 </template>
 
