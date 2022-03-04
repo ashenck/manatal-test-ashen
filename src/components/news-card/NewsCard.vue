@@ -3,7 +3,10 @@
     <p class="headline font-weight-bold headline-truncate mb-1">
       {{ articleData.title }}
     </p>
-    <v-img :src="articleData.urlToImage" class="rounded-xl" height="250px"> </v-img>
+    <v-img v-if="articleData.urlToImage"
+    :src="articleData.urlToImage" class="rounded-xl" height="250px"> </v-img>
+    <v-img v-if="!articleData.urlToImage"
+    src="@/assets/newsPlaceholder.png" class="rounded-xl" height="250px"> </v-img>
     <p class="text-justify pt-2 mb-2">
       {{ articleData.description }}
     </p>
