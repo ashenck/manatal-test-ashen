@@ -1,7 +1,8 @@
 <template>
   <v-app-bar app flat color="white" elevation="1">
     <div class="d-flex align-center">
-      <h1 class="font-weight-black"><i>NEWS</i></h1>
+      <h1 class="font-weight-bold"
+      >NEWS<span class="deep-orange--text font-weight-bold">APP</span></h1>
     </div>
 
     <v-spacer></v-spacer>
