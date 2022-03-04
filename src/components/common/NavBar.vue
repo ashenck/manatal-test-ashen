@@ -1,8 +1,9 @@
 <template>
   <v-app-bar app flat color="white" elevation="1">
     <div class="d-flex align-center">
-      <h1 class="font-weight-bold"
-      >NEWS<span class="deep-orange--text font-weight-bold">APP</span></h1>
+      <router-link class="text-decoration-none" to="/">
+      <h1 class="font-weight-bold black--text"
+      >NEWS<span class="deep-orange--text font-weight-bold">APP</span></h1></router-link>
     </div>
 
     <v-spacer></v-spacer>

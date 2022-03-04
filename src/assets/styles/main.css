@@ -6,6 +6,14 @@
   font-family: "Poppins", sans-serif !important;
 }
 
+.v-breadcrumbs__item {
+  color: #ff5722  !important;
+}
+
+.v-breadcrumbs__item--disabled {
+  color: grey !important;
+}
+
 /* General CSS */
 
 .headline-truncate {
