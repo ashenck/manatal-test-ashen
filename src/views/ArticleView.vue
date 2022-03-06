@@ -17,7 +17,6 @@
             v-if="article.urlToImage"
             :src="article.urlToImage"
             class="mb-2 rounded-lg"
-            height="250px"
           >
           </v-img>
           <v-img
@@ -64,7 +63,7 @@ export default {
       {
         text: 'Home',
         disabled: false,
-        href: '/',
+        to: '/',
       },
       {
         text: 'Article',

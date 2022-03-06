@@ -1,19 +1,26 @@
 <template>
   <v-card elevation="0" class="pa-xl-4 pa-lg-4 pa-md-2 pa-sm-2 pa-xs-2">
-    <p class="headline font-weight-bold headline-truncate mb-1">
+    <p
+      class="headline font-weight-bold headline-truncate mb-1 pointer"
+      @click="pushToArticle(articleData)"
+      aria-hidden="true"
+    >
       {{ articleData.title }}
     </p>
     <v-img
+      @click="pushToArticle(articleData)"
+      aria-hidden="true"
       v-if="articleData.urlToImage"
       :src="articleData.urlToImage"
-      class="rounded-xl"
-      height="250px"
+      class="rounded-xl pointer"
     >
     </v-img>
     <v-img
       v-if="!articleData.urlToImage"
+      @click="pushToArticle(articleData)"
+      aria-hidden="true"
       src="@/assets/newsPlaceholder.png"
-      class="rounded-xl"
+      class="rounded-xl pointer"
       height="250px"
     >
     </v-img>

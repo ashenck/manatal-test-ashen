@@ -15,8 +15,9 @@ function getLocalStoreToken() {
 // Request interceptor
 client.interceptors.request.use(
   (request) => {
+    const token = { apiKey: getLocalStoreToken() };
     // eslint-disable-next-line no-param-reassign
-    request.params = { apiKey: getLocalStoreToken() };
+    request.params = Object.assign(request.params, token);
     return request;
   },
   (error) => Promise.reject(error),
@@ -30,6 +31,7 @@ client.interceptors.response.use(
 
 const newsService = {
   topHeadLines(params) {
+    console.log(params);
     return client.request({
       method: 'get',
       url: '/v2/top-headlines?country=us',

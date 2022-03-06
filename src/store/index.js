@@ -11,11 +11,13 @@ export default new Vuex.Store({
     article: {},
     topHeadlines: [],
     history: [],
+    searchTxt: '',
   },
   getters: {
     topHeadlines: (state) => state.topHeadlines,
     article: (state) => state.article,
     history: (state) => state.history,
+    searchTxt: (state) => state.searchTxt,
   },
   mutations: {
     setTopHeadlines(state, payload) {
@@ -27,16 +29,27 @@ export default new Vuex.Store({
     setHistory(state, payload) {
       state.history.push(payload);
     },
+    setSearchTxt(state, payload) {
+      state.searchTxt = payload;
+    },
   },
   actions: {
     async fetchTopHeadlines(state) {
-      const result = await services.newsService.topHeadLines();
+      const params = {};
+      if (this.state.searchTxt) {
+        params.q = this.state.searchTxt;
+      }
+      const result = await services.newsService.topHeadLines(params);
       state.commit('setTopHeadlines', result?.data?.articles ? result.data.articles : []);
     },
     async pushToArticle({ commit }, payload) {
       commit('setArticle', payload);
       commit('setHistory', payload);
       router.push('/article');
+    },
+    async searchTrigger({ commit, dispatch }, payload) {
+      commit('setSearchTxt', payload);
+      dispatch('fetchTopHeadlines');
     },
   },
   modules: {
