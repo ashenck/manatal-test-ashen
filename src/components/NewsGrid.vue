@@ -1,17 +1,33 @@
 <template>
-  <v-container fluid>
-    <v-row dense>
-      <v-col v-for="article in topHeadlines"
-      :key="article.title" cols="12" sm="6" md="6" lg="4" xl="3"
-      class="mb-4">
-        <news-card :articleData="article" />
+  <v-container fluid class=" pb-0">
+    <v-row dense v-show="loadingArticles">
+      <v-col class="text-center my-4" cols="12">
+        <v-progress-circular
+          :size="70"
+          :width="7"
+          color="deep-orange"
+          indeterminate
+        ></v-progress-circular>
       </v-col>
     </v-row>
-    </v-container>
+    <v-row dense v-show="!loadingArticles">
+      <v-col
+        v-for="(article, index) in topHeadlines"
+        :key="article.title"
+        cols="12"
+        sm="6"
+        md="6"
+        lg="4"
+        xl="3"
+        class="mb-4"
+      >
+        <news-card :articleData="article" :index="index" />
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script>
-
 import { mapActions, mapGetters } from 'vuex';
 import NewsCard from './news-card/NewsCard.vue';
 
@@ -27,7 +43,7 @@ export default {
     this.fetchTopHeadlines();
   },
   computed: {
-    ...mapGetters({ topHeadlines: 'topHeadlines' }),
+    ...mapGetters({ topHeadlines: 'topHeadlines', loadingArticles: 'loadingArticles' }),
   },
   methods: {
     ...mapActions({ fetchTopHeadlines: 'fetchTopHeadlines' }),

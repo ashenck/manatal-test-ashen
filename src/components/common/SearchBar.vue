@@ -1,13 +1,13 @@
 <template>
   <div>
     <v-text-field
-            label="Search"
-            outlined
-            dense
-            hide-details
-            :value="searchTxt"
-            @keyup="updateSearch"
-          ></v-text-field>
+      label="Search"
+      outlined
+      dense
+      hide-details
+      :value="searchTxt"
+      @keyup="updateSearch"
+    ></v-text-field>
   </div>
 </template>
 

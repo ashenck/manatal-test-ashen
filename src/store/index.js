@@ -14,6 +14,7 @@ export default new Vuex.Store({
     searchTxt: '',
     sources: [],
     selectedSource: {},
+    loadingArticles: false,
   },
   getters: {
     topHeadlines: (state) => state.topHeadlines,
@@ -22,6 +23,7 @@ export default new Vuex.Store({
     searchTxt: (state) => state.searchTxt,
     sources: (state) => state.sources,
     selectedSource: (state) => state.selectedSource,
+    loadingArticles: (state) => state.loadingArticles,
   },
   mutations: {
     setTopHeadlines(state, payload) {
@@ -42,9 +44,17 @@ export default new Vuex.Store({
     setSelectedSource(state, payload) {
       state.selectedSource = payload;
     },
+    setLoadingArticles(state, payload) {
+      state.loadingArticles = payload;
+    },
+    setArticleHeadline(state, payload) {
+      state.topHeadlines[payload.index].title = payload.headline;
+      console.log(payload);
+    },
   },
   actions: {
     async fetchTopHeadlines(state) {
+      state.commit('setLoadingArticles', true);
       const params = {};
       if (this.state.selectedSource) {
         params.sources = this.state.selectedSource.value;
@@ -58,6 +68,7 @@ export default new Vuex.Store({
       }
       const result = await services.newsService.topHeadLines(params);
       state.commit('setTopHeadlines', result?.data?.articles ? result.data.articles : []);
+      state.commit('setLoadingArticles', false);
     },
     async pushToArticle({ commit }, payload) {
       commit('setArticle', payload);
