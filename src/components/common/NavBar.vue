@@ -8,14 +8,14 @@
           </h1></router-link
         >
       </div>
-      <SeachBar class="mt-6 d-none d-sm-flex" />
+      <SeachBar class="mt-1 d-none d-sm-flex" />
       <v-spacer></v-spacer>
       <v-app-bar-nav-icon
         class="d-flex d-sm-none"
         @click.stop="drawer = !drawer"
       ></v-app-bar-nav-icon>
       <v-btn class="mx-0 d-none d-sm-flex" text to="/">
-        <v-icon dark> mdi-home </v-icon> <v-span>Home</v-span>
+        <v-icon dark> mdi-home </v-icon> <span>Home</span>
       </v-btn>
       <v-btn class="ml-1 d-none d-sm-flex" text>
         <v-icon class="mr-1" dark> mdi-history </v-icon> <span>History</span>
@@ -23,7 +23,7 @@
     </v-app-bar>
     <v-navigation-drawer v-model="drawer" absolute temporary>
       <v-list nav dense>
-        <v-list-item-group v-model="group" active-class="deep-orange--text text--accent-4">
+        <v-list-item-group active-class="deep-orange--text text--accent-4">
           <v-list-item>
             <v-list-item-title
               ><router-link to="/" class="text-decoration-none black--text"

@@ -8,7 +8,7 @@ const client = axios.create(config.api);
 function getLocalStoreToken() {
   // const token = localStorage.getItem('token');
   // Local storage can be used hold the token
-  const token = '099148be22804e849a0c6fe022b7cf5e';
+  const token = 'f8ae20decfa045069cd7a5a70d424b14';
   return token;
 }
 
@@ -16,8 +16,13 @@ function getLocalStoreToken() {
 client.interceptors.request.use(
   (request) => {
     const token = { apiKey: getLocalStoreToken() };
-    // eslint-disable-next-line no-param-reassign
-    request.params = Object.assign(request.params, token);
+    if (request.params) {
+      // eslint-disable-next-line no-param-reassign
+      request.params = Object.assign(request.params, token);
+    } else {
+      // eslint-disable-next-line no-param-reassign
+      request.params = token;
+    }
     return request;
   },
   (error) => Promise.reject(error),
@@ -34,7 +39,15 @@ const newsService = {
     console.log(params);
     return client.request({
       method: 'get',
-      url: '/v2/top-headlines?country=us',
+      url: '/v2/top-headlines',
+      params,
+    });
+  },
+  listSources(params) {
+    console.log(params);
+    return client.request({
+      method: 'get',
+      url: '/v2/sources',
       params,
     });
   },
