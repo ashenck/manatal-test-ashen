@@ -36,7 +36,6 @@ client.interceptors.response.use(
 
 const newsService = {
   topHeadLines(params) {
-    console.log(params);
     return client.request({
       method: 'get',
       url: '/v2/top-headlines',
@@ -44,10 +43,16 @@ const newsService = {
     });
   },
   listSources(params) {
-    console.log(params);
     return client.request({
       method: 'get',
       url: '/v2/sources',
+      params,
+    });
+  },
+  errorEndPoint(params) {
+    return client.request({
+      method: 'get',
+      url: '/v2/sourceses',
       params,
     });
   },

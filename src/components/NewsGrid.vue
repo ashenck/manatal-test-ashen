@@ -29,7 +29,7 @@
 
 <script>
 import { mapActions, mapGetters } from 'vuex';
-import NewsCard from './news-card/NewsCard.vue';
+import NewsCard from './news/NewsCard.vue';
 
 export default {
   name: 'NewsGrid',

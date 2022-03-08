@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-combobox
-      :value="selectedSource && selectedSource.text ? selectedSource.text : '' "
+      :value="selectedSource && selectedSource.text ? selectedSource.text : ''"
       :items="sources"
       label="Filter By Source"
       clearable
@@ -27,7 +27,9 @@ export default {
     ...mapGetters({ sources: 'sources', selectedSource: 'selectedSource' }),
   },
   created() {
-    if (this.sources.length === 0) { this.fetchFilterSources(); }
+    if (this.sources.length === 0) {
+      this.fetchFilterSources();
+    }
   },
   methods: {
     ...mapActions({ filterBySource: 'filterBySource' }),
@@ -36,15 +38,19 @@ export default {
       this.searchTrigger(e.target.value);
     },
     async fetchFilterSources() {
-      const result = await services.newsService.listSources();
-      const resultSources = result?.data?.sources ? result.data.sources : [];
-      resultSources.forEach((element) => {
-        // eslint-disable-next-line no-param-reassign
-        element.text = element.name;
-        // eslint-disable-next-line no-param-reassign
-        element.value = element.id;
-      });
-      this.setSources(resultSources);
+      try {
+        const result = await services.newsService.listSources();
+        const resultSources = result?.data?.sources ? result.data.sources : [];
+        resultSources.forEach((element) => {
+          // eslint-disable-next-line no-param-reassign
+          element.text = element.name;
+          // eslint-disable-next-line no-param-reassign
+          element.value = element.id;
+        });
+        this.setSources(resultSources);
+      } catch (error) {
+        this.setSources([]);
+      }
     },
     updateSourceID(e) {
       this.filterBySource(e);

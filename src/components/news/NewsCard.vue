@@ -1,5 +1,5 @@
 <template>
-  <v-card elevation="0" class="pa-xl-4 pa-lg-4 pa-md-2 pa-sm-2 pa-xs-2">
+  <v-card elevation="0" class="pa-xl-4 pa-lg-4 pa-md-2 pa-sm-2 pa-xs-2 mb-4">
     <p
       class="headline font-weight-bold headline-truncate mb-1 pointer"
       @click="pushToArticle(articleData)"
