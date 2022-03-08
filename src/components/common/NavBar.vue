@@ -8,7 +8,7 @@
           </h1></router-link
         >
       </div>
-      <SeachBar class="mt-1 d-none d-sm-flex" />
+      <SeachBar class="mt-0 mr-2 d-none d-sm-flex" />
       <v-spacer></v-spacer>
       <v-app-bar-nav-icon
         class="d-flex d-sm-none"
@@ -116,7 +116,7 @@ export default {
     dialogm1: '',
     dialog: false,
     snackbar: false,
-    errorText: 'Somthing Went Wrong!',
+    errorText: 'Something Went Wrong!',
   }),
   computed: {
     ...mapGetters({ history: 'history' }),
